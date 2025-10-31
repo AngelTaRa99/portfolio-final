@@ -43,7 +43,7 @@ export default function Home() {
             Angel T. Ramírez
           </p>
           <div className="flex flex-row gap-5 text-sm tracking-widest">
-            <a href="" className="flex gap-2">
+            <a href="https://github.com/AngelTaRa99" target="_blank" className="flex gap-2">
               <p className="hidden md:block">Github</p>
               <Github size={18} />
             </a>
