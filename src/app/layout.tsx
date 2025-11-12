@@ -41,13 +41,13 @@ export default function RootLayout({
             <Link href="/#">
               <House size={18} />
             </Link>
-            <Link href={{pathname: '/user'}}>
+            <Link href="/user">
               <User size={18} />
             </Link>
-            <Link href="">
+            <Link href="/projects">
               <Folder size={18} />
             </Link>
-            <Link href="">
+            <Link href="/contact">
               <Mail size={18} />
             </Link>
           </div>
