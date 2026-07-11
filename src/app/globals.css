@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +19,257 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.neumorph-pill {
+  background: #fafafa;
+  border-radius: 50px;
+  box-shadow: 3px 3px 6px #d1d5db, -3px -3px 6px #ffffff;
+}
+
+.dark .neumorph-pill {
+  background: #18181b;
+  box-shadow: 3px 3px 6px #0a0a0a, -3px -3px 6px #262626;
+}
+
+.neumorph {
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px #d1d5db, -4px -4px 8px #ffffff;
+  transition: box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.dark .neumorph {
+  background: #18181b;
+  box-shadow: 4px 4px 8px #0a0a0a, -4px -4px 8px #262626;
+}
+
+.neumorph:hover {
+  box-shadow: inset 2px 2px 5px #d1d5db, inset -2px -2px 5px #ffffff;
+  transform: scale(0.95);
+}
+
+.dark .neumorph:hover {
+  box-shadow: inset 2px 2px 5px #0a0a0a, inset -2px -2px 5px #262626;
+}
+
+.neumorph:active {
+  transform: scale(0.9);
+}
+
+.neumorph-active {
+  box-shadow: inset 3px 3px 6px #d1d5db, inset -3px -3px 6px #ffffff;
+  transform: scale(0.95);
+}
+
+.dark .neumorph-active {
+  box-shadow: inset 3px 3px 6px #0a0a0a, inset -3px -3px 6px #262626;
+}
+
+.led-active {
+  background: #dc2626;
+  will-change: opacity;
+  animation: ledFlicker 2s ease-in-out infinite;
+}
+
+.led-active::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px rgba(220, 38, 38, 0.6);
+  pointer-events: none;
+}
+
+.dark .led-active::after {
+  box-shadow: 0 0 5px 2px rgba(220, 38, 38, 0.7);
+}
+
+@keyframes ledFlicker {
+  0%, 100% { opacity: 1; }
+  30% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  70% { opacity: 0.5; }
+}
+
+.crt-container {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.dark .crt-container {
+  background: #0a0a0a;
+}
+
+.crt-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 100% 3px;
+  will-change: background-position;
+  animation: scanlinesMove 8s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.dark .crt-container::before {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: 100% 3px;
+}
+
+@keyframes scanlinesMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 100px; }
+}
+
+.crt-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow:
+    inset 0 0 60px 10px rgba(0, 0, 0, 0.08),
+    inset 0 0 120px 30px rgba(220, 38, 38, 0.02);
+  pointer-events: none;
+  z-index: 11;
+}
+
+.dark .crt-container::after {
+  box-shadow:
+    inset 0 0 80px 15px rgba(0, 0, 0, 0.4),
+    inset 0 0 150px 40px rgba(220, 38, 38, 0.03);
+}
+
+.crt-text {
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.1),
+    0 0 8px rgba(0, 0, 0, 0.03);
+}
+
+.dark .crt-text {
+  text-shadow:
+    0.5px 0 0 rgba(220, 38, 38, 0.15),
+    -0.5px 0 0 rgba(0, 100, 200, 0.1),
+    0 0 6px rgba(255, 255, 255, 0.06);
+}
+
+.crt-channel-change {
+  will-change: transform, filter;
+  animation: channelChange 0.3s ease-out;
+}
+
+@keyframes channelChange {
+  0% {
+    filter: brightness(3) contrast(2) saturate(0);
+    transform: scaleY(0.005) scaleX(1.2);
+  }
+  15% {
+    filter: brightness(2) contrast(1.5) saturate(0);
+    transform: scaleY(0.01) scaleX(1);
+  }
+  30% {
+    filter: brightness(0.2) contrast(2) saturate(0.3);
+    transform: scaleY(1.05) scaleX(0.98);
+  }
+  50% {
+    filter: brightness(1.5) contrast(1.2) saturate(0.5);
+    transform: scaleY(0.98) scaleX(1.01);
+  }
+  70% {
+    filter: brightness(0.8) contrast(1.1) saturate(0.8);
+    transform: scaleY(1.01) scaleX(1);
+  }
+  100% {
+    filter: brightness(1) contrast(1) saturate(1);
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+.crt-static {
+  will-change: opacity;
+  animation: staticFlash 0.15s steps(3) forwards;
+}
+
+@keyframes staticFlash {
+  0% { opacity: 1; }
+  33% { opacity: 0.4; }
+  66% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* Project card */
+.neumorph-card {
+  background: #fafafa;
+  border-radius: 16px;
+  box-shadow:
+    6px 6px 12px #d1d5db,
+    -6px -6px 12px #ffffff;
+}
+
+.dark .neumorph-card {
+  background: #18181b;
+  box-shadow:
+    6px 6px 12px #0a0a0a,
+    -6px -6px 12px #262626;
+}
+
+.tag {
+  background: rgba(220, 38, 38, 0.08);
+  color: #dc2626;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(220, 38, 38, 0.15);
+}
+
+.dark .tag {
+  background: rgba(220, 38, 38, 0.12);
+  color: #f87171;
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+.neumorph-link {
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow:
+    3px 3px 6px #d1d5db,
+    -3px -3px 6px #ffffff;
+  transition: box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.dark .neumorph-link {
+  background: #18181b;
+  box-shadow:
+    3px 3px 6px #0a0a0a,
+    -3px -3px 6px #262626;
+}
+
+.neumorph-link:hover {
+  box-shadow: inset 2px 2px 5px #d1d5db, inset -2px -2px 5px #ffffff;
+  transform: scale(0.97);
+}
+
+.dark .neumorph-link:hover {
+  box-shadow: inset 2px 2px 5px #0a0a0a, inset -2px -2px 5px #262626;
+}
+
+.neumorph-link:active {
+  transform: scale(0.94);
 }
