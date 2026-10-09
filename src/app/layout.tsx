@@ -1,4 +1,5 @@
-import type { Metadata, ReactNode } from "next";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="flex min-h-dvh flex-col bg-background font-mono text-foreground antialiased">
+      <body className={`${jetbrainsMono.variable} flex min-h-dvh flex-col bg-background font-mono text-foreground antialiased`}>
         <Header brand={profile.brand} />
         <div className="flex flex-1 flex-col lg:flex-row">
           <NavRail />
