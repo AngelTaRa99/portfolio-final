@@ -7,7 +7,9 @@ export default function Experience() {
   return (
     <TerminalPanel title="experiencia" path="~/experience" className="w-full max-w-3xl">
       <h1 className="text-xl text-foreground">Experiencia</h1>
-      <PromptLine>cat ~/cv.txt</PromptLine>
+      <p className="mt-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <PromptLine>cat ~/cv.txt</PromptLine>
+      </p>
       <ul className="mt-8">
         {experience.map((item) => (
           <TimelineItem key={item.id} item={item} />

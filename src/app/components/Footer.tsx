@@ -8,7 +8,7 @@ export default function Footer() {
       <ul className="flex flex-wrap items-center gap-4">
         <li>
           <a
-            className="flex items-center gap-1 transition-colors hover:text-foreground"
+            className="flex min-h-11 items-center gap-1 transition-colors hover:text-foreground"
             href={profile.socials.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -18,7 +18,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className="flex items-center gap-1 transition-colors hover:text-foreground"
+            className="flex min-h-11 items-center gap-1 transition-colors hover:text-foreground"
             href={profile.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
@@ -28,7 +28,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className="flex items-center gap-1 transition-colors hover:text-foreground"
+            className="flex min-h-11 items-center gap-1 transition-colors hover:text-foreground"
             href={`mailto:${profile.email}`}
           >
             <Email size={16} aria-hidden="true" /> Email

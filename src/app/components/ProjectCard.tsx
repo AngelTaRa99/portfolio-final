@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center justify-center rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
+          className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-primary hover:text-primary"
         >
           Ver proyecto&nbsp;↗
         </a>

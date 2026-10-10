@@ -35,7 +35,7 @@ export default function NavRail() {
             }`}
           >
             <Icon size={18} aria-hidden="true" />
-            <span>{label}</span>
+            <span className="hidden lg:inline">{label}</span>
           </Link>
         );
       })}

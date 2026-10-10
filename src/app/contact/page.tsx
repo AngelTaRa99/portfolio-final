@@ -50,7 +50,7 @@ export default function Contact() {
             <a
               href={href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="flex items-center justify-between gap-3 rounded-lg border border-border bg-surface-2 px-4 py-3 transition-colors hover:border-primary hover:text-primary"
+              className="flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-surface-2 px-4 py-3 transition-colors hover:border-primary hover:text-primary"
             >
               <span className="flex items-center gap-3 font-mono text-sm text-foreground">
                 <Icon size={18} aria-hidden="true" />
